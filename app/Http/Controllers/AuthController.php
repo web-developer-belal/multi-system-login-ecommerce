@@ -60,11 +60,11 @@ class AuthController extends Controller
 
         // Sync user to foodpanda app
         try {
-            Http::post(env('SECOND_APP_URL').'/api/sync-user', [
-                'name'     => $user->name,
-                'email'    => $user->email,
-                'password' => $user->password, 
-            ]);
+            // Http::post(env('SECOND_APP_URL').'/api/sync-user', [
+            //     'name'     => $user->name,
+            //     'email'    => $user->email,
+            //     'password' => $user->password, 
+            // ]);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
         }
@@ -86,9 +86,9 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         try {
-            Http::withHeaders([
-                'Accept' => 'application/json',
-            ])->post(env('SECOND_APP_URL').'/logout');
+            // Http::withHeaders([
+            //     'Accept' => 'application/json',
+            // ])->post(env('SECOND_APP_URL').'/logout');
         } catch (\Exception $e) {
             // Log error if needed
             Log::error($e->getMessage());
